@@ -68,7 +68,7 @@ const GallerySection = () => {
       {/* CSS Animation */}
       <style jsx>{`
         .gallery-scroll {
-          animation: scroll-gallery 30s linear infinite;
+          animation: scroll-gallery 20s linear infinite;
         }
 
         .gallery-scroll:hover {
