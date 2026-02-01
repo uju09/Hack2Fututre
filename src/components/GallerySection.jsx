@@ -3,12 +3,12 @@ import React from 'react';
 const GallerySection = () => {
   // Add your image URLs here - as many as you want
   const images = [
-    '/src/assets/images/image_text.jpg',
-    '/src/assets/images/image_text.jpg',
-    '/src/assets/images/image_text.jpg',
-    '/src/assets/images/image_text.jpg',
-    '/src/assets/images/image_text.jpg',
-    '/src/assets/images/image_text.jpg',
+    '/images/image_text.jpg',
+    '/images/image_text.jpg',
+    '/images/image_text.jpg',
+    '/images/image_text.jpg',
+    '/images/image_text.jpg',
+    '/images/image_text.jpg',
     // Add more images as needed
   ];
 
