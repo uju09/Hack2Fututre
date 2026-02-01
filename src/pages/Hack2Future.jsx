@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Ticker from '../components/Ticker';
 import AboutSection from '../components/AboutSection';
+import GallerySection from '../components/GallerySection';
 import ProblemsSection from '../components/ProblemsSection';
 import PrizesSection from '../components/PrizesSection';
 import TimelineSection from '../components/TimelineSection';
@@ -91,6 +92,7 @@ const Hack2Future = () => {
         <Hero />
         <Ticker />
         <AboutSection />
+        <GallerySection />
         <ProblemsSection />
         <PrizesSection />
         <TimelineSection />
