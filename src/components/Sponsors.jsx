@@ -1,4 +1,5 @@
 import React from 'react'
+import { AnimateOnScroll } from '../hooks/useScrollAnimation'
 
 const Sponsors = () => {
     const sponsors = [
@@ -14,28 +15,31 @@ const Sponsors = () => {
 
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-10 md:mb-16">
-                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight section-heading">
-                        SPONSORS & PARTNERS
-                    </h2>
-                    <p className="text-white/60 mt-3 md:mt-4 max-w-xl mx-auto text-sm sm:text-base px-4">
-                        Proudly supported by industry leaders who believe in nurturing innovators
-                    </p>
-                </div>
+                <AnimateOnScroll animation="fade-up">
+                    <div className="text-center mb-10 md:mb-16">
+                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight section-heading">
+                            SPONSORS & PARTNERS
+                        </h2>
+                        <p className="text-white/60 mt-3 md:mt-4 max-w-xl mx-auto text-sm sm:text-base px-4">
+                            Proudly supported by industry leaders who believe in nurturing innovators
+                        </p>
+                    </div>
+                </AnimateOnScroll>
 
                 {/* Sponsors Grid */}
                 <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-                    {sponsors.map((sponsor) => (
-                        <div
-                            key={sponsor.name}
-                            className="w-48 h-32 sm:w-64 sm:h-40 md:w-80 md:h-48 flex items-center justify-center bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl md:rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer p-4 md:p-6 shadow-lg"
-                        >
-                            <img
-                                src={sponsor.logo}
-                                alt={sponsor.name}
-                                className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                            />
-                        </div>
+                    {sponsors.map((sponsor, idx) => (
+                        <AnimateOnScroll key={sponsor.name} animation="fade-up" delay={100 + idx * 150}>
+                            <div
+                                className="w-48 h-32 sm:w-64 sm:h-40 md:w-80 md:h-48 flex items-center justify-center bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl md:rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer p-4 md:p-6 shadow-lg"
+                            >
+                                <img
+                                    src={sponsor.logo}
+                                    alt={sponsor.name}
+                                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                        </AnimateOnScroll>
                     ))}
                 </div>
             </div>
@@ -44,3 +48,4 @@ const Sponsors = () => {
 }
 
 export default Sponsors
+

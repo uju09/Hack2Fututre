@@ -1,4 +1,5 @@
 import React from 'react'
+import { AnimateOnScroll } from '../hooks/useScrollAnimation'
 
 const Contact = () => {
     const socialLinks = [
@@ -27,74 +28,82 @@ const Contact = () => {
 
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-10 md:mb-16">
-                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight section-heading">
-                        CONTACT US
-                    </h2>
-                    <p className="text-white/60 mt-3 md:mt-4 max-w-xl mx-auto text-sm sm:text-base px-4">
-                        Have questions? Reach out to us through any of the channels below.
-                    </p>
-                </div>
+                <AnimateOnScroll animation="fade-up">
+                    <div className="text-center mb-10 md:mb-16">
+                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight section-heading">
+                            CONTACT US
+                        </h2>
+                        <p className="text-white/60 mt-3 md:mt-4 max-w-xl mx-auto text-sm sm:text-base px-4">
+                            Have questions? Reach out to us through any of the channels below.
+                        </p>
+                    </div>
+                </AnimateOnScroll>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                     {/* Contact Info Card */}
-                    <div className="p-5 md:p-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl backdrop-blur-sm">
-                        <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
-                            <span>📞</span> Quick Contact
-                        </h3>
-                        <div className="space-y-3 md:space-y-4">
-                            {contactInfo.map((info) => (
-                                <div key={info.label} className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-lg md:rounded-xl hover:bg-white/10 transition-all duration-300">
-                                    <span className="text-xl md:text-2xl">{info.icon}</span>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="text-white/50 text-xs md:text-sm">{info.label}</p>
-                                        <p className="text-white font-medium text-sm md:text-base truncate">{info.value}</p>
+                    <AnimateOnScroll animation="fade-right" delay={100}>
+                        <div className="p-5 md:p-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl backdrop-blur-sm h-full">
+                            <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
+                                <span>📞</span> Quick Contact
+                            </h3>
+                            <div className="space-y-3 md:space-y-4">
+                                {contactInfo.map((info) => (
+                                    <div key={info.label} className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-lg md:rounded-xl hover:bg-white/10 transition-all duration-300">
+                                        <span className="text-xl md:text-2xl">{info.icon}</span>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="text-white/50 text-xs md:text-sm">{info.label}</p>
+                                            <p className="text-white font-medium text-sm md:text-base truncate">{info.value}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    </AnimateOnScroll>
 
                     {/* Team Card */}
-                    <div className="p-5 md:p-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl backdrop-blur-sm">
-                        <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
-                            <span>👥</span> Organizing Team
-                        </h3>
-                        <div className="space-y-3 md:space-y-4">
-                            {teamMembers.map((member) => (
-                                <div key={member.name} className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-lg md:rounded-xl hover:bg-white/10 transition-all duration-300">
-                                    <span className="text-xl md:text-2xl">{member.icon}</span>
-                                    <div>
-                                        <p className="text-white font-medium text-sm md:text-base">{member.name}</p>
-                                        <p className="text-white/50 text-xs md:text-sm">{member.role}</p>
+                    <AnimateOnScroll animation="fade-up" delay={200}>
+                        <div className="p-5 md:p-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl backdrop-blur-sm h-full">
+                            <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
+                                <span>👥</span> Organizing Team
+                            </h3>
+                            <div className="space-y-3 md:space-y-4">
+                                {teamMembers.map((member) => (
+                                    <div key={member.name} className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-lg md:rounded-xl hover:bg-white/10 transition-all duration-300">
+                                        <span className="text-xl md:text-2xl">{member.icon}</span>
+                                        <div>
+                                            <p className="text-white font-medium text-sm md:text-base">{member.name}</p>
+                                            <p className="text-white/50 text-xs md:text-sm">{member.role}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    </AnimateOnScroll>
 
                     {/* Social Links Card */}
-                    <div className="p-5 md:p-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl backdrop-blur-sm md:col-span-2 lg:col-span-1">
-                        <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
-                            <span>🌐</span> Follow Us
-                        </h3>
-                        <p className="text-white/60 mb-4 md:mb-6 text-sm md:text-base">
-                            Stay updated with the latest news
-                        </p>
-                        <div className="grid grid-cols-2 gap-3 md:gap-4">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.link}
-                                    className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-white/5 border border-white/10 rounded-lg md:rounded-xl text-white hover:bg-white/10 transition-all duration-300 ${social.color}`}
-                                    title={social.name}
-                                >
-                                    <span className="text-xl md:text-2xl">{social.icon}</span>
-                                    <span className="font-medium text-sm md:text-base">{social.name}</span>
-                                </a>
-                            ))}
+                    <AnimateOnScroll animation="fade-left" delay={300}>
+                        <div className="p-5 md:p-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl backdrop-blur-sm md:col-span-2 lg:col-span-1 h-full">
+                            <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2">
+                                <span>🌐</span> Follow Us
+                            </h3>
+                            <p className="text-white/60 mb-4 md:mb-6 text-sm md:text-base">
+                                Stay updated with the latest news
+                            </p>
+                            <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                {socialLinks.map((social) => (
+                                    <a
+                                        key={social.name}
+                                        href={social.link}
+                                        className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-white/5 border border-white/10 rounded-lg md:rounded-xl text-white hover:bg-white/10 transition-all duration-300 ${social.color}`}
+                                        title={social.name}
+                                    >
+                                        <span className="text-xl md:text-2xl">{social.icon}</span>
+                                        <span className="font-medium text-sm md:text-base">{social.name}</span>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    </AnimateOnScroll>
                 </div>
             </div>
         </section>
@@ -102,3 +111,4 @@ const Contact = () => {
 }
 
 export default Contact
+
