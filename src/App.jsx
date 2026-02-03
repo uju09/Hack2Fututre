@@ -14,7 +14,7 @@ function App() {
     <div className="relative min-h-screen w-full bg-black text-white overflow-x-hidden font-inter select-none">
       {/* Earth Horizon - Fixed in background */}
       <img
-        src="/earth.jpg"
+        src="/earth.webp"
         alt="Earth"
         className="fixed -bottom-10 -left-20 w-[120%] md:w-[120%] lg:w-[110%] z-[1] pointer-events-none select-none max-w-none origin-bottom-left"
       />
