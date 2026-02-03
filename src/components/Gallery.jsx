@@ -3,16 +3,23 @@ import React, { useState, useRef, useEffect } from 'react'
 const Gallery = () => {
     const [isPaused, setIsPaused] = useState(false)
     const scrollRef = useRef(null)
+    const scrollPositionRef = useRef(0)
 
+    // All 13 images from public/gallery
     const images = [
-        { id: 1, gradient: 'from-blue-600/40 to-purple-600/40' },
-        { id: 2, gradient: 'from-[#2DD4BF]/40 to-blue-600/40' },
-        { id: 3, gradient: 'from-purple-600/40 to-pink-600/40' },
-        { id: 4, gradient: 'from-blue-600/40 to-[#2DD4BF]/40' },
-        { id: 5, gradient: 'from-pink-600/40 to-purple-600/40' },
-        { id: 6, gradient: 'from-[#2563EB]/40 to-blue-400/40' },
-        { id: 7, gradient: 'from-teal-500/40 to-blue-500/40' },
-        { id: 8, gradient: 'from-indigo-600/40 to-purple-600/40' }
+        { id: 1, src: '/gallery/gallery1.jpeg' },
+        { id: 2, src: '/gallery/gallery2.jpeg' },
+        { id: 3, src: '/gallery/gallery3.jpeg' },
+        { id: 4, src: '/gallery/gallery4.jpeg' },
+        { id: 5, src: '/gallery/gallery5.jpeg' },
+        { id: 6, src: '/gallery/gallery6.jpeg' },
+        { id: 7, src: '/gallery/gallery7.jpeg' },
+        { id: 8, src: '/gallery/gallery8.jpeg' },
+        { id: 9, src: '/gallery/gallery9.jpeg' },
+        { id: 10, src: '/gallery/gallery10.jpeg' },
+        { id: 11, src: '/gallery/gallery11.jpeg' },
+        { id: 12, src: '/gallery/gallery12.jpeg' },
+        { id: 13, src: '/gallery/gallery13.jpeg' }
     ]
 
     // Duplicate images for seamless infinite scroll
@@ -23,18 +30,18 @@ const Gallery = () => {
         if (!scrollContainer) return
 
         let animationId
-        let scrollPosition = 0
         const scrollSpeed = 0.8
 
         const animate = () => {
             if (!isPaused) {
-                scrollPosition += scrollSpeed
+                scrollPositionRef.current += scrollSpeed
 
-                if (scrollPosition >= scrollContainer.scrollWidth / 2) {
-                    scrollPosition = 0
+                // Reset to beginning for seamless loop
+                if (scrollPositionRef.current >= scrollContainer.scrollWidth / 2) {
+                    scrollPositionRef.current = 0
                 }
 
-                scrollContainer.scrollLeft = scrollPosition
+                scrollContainer.scrollLeft = scrollPositionRef.current
             }
             animationId = requestAnimationFrame(animate)
         }
@@ -77,33 +84,21 @@ const Gallery = () => {
                         key={`${image.id}-${idx}`}
                         className="flex-shrink-0 w-56 h-36 sm:w-72 sm:h-48 md:w-96 md:h-64 relative group overflow-hidden rounded-xl md:rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:border-white/20"
                     >
-                        {/* Gradient Background */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${image.gradient}`} />
+                        {/* Actual Image */}
+                        <img
+                            src={image.src}
+                            alt={`Gallery image ${image.id}`}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
+                        />
 
-                        {/* Decorative Stars */}
-                        <div className="absolute top-3 md:top-4 right-3 md:right-4 w-1.5 md:w-2 h-1.5 md:h-2 bg-white rounded-full animate-pulse" />
-                        <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 w-1 md:w-1.5 h-1 md:h-1.5 bg-white/80 rounded-full animate-pulse" style={{ animationDelay: '100ms' }} />
+                        {/* Hover Overlay with Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
 
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                            <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                <span className="text-white text-sm md:text-lg font-medium">Event {image.id}</span>
-                            </div>
-                        </div>
-
-                        {/* Image placeholder icon */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-50 transition-opacity duration-300">
-                            <span className="text-3xl md:text-5xl">📸</span>
-                        </div>
+                        {/* Decorative corner glow on hover */}
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-[#2DD4BF]/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                 ))}
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 lg:px-32 mt-6 md:mt-8">
-                <p className="text-center text-white/40 text-xs md:text-sm">
-                    <span className="inline-block animate-pulse">●</span> Hover/touch to pause
-                </p>
             </div>
         </section>
     )
